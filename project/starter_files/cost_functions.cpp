@@ -70,7 +70,7 @@ double collision_circles_cost_spiral(const std::vector<PathPoint>& spiral,
           // TODO-Distance from circles to obstacles/actor: How do you calculate
           // the distance between the center of each circle and the
           // obstacle/actor circle_center_x - actor_center_x
-          double dist = std::sqrt((circle_center_x - actor_center_x)*(circle_center_x - actor_center_x) + (circle_center_x - actor_center_x)*(circle_center_x - actor_center_x));  // <- Update
+          double dist = std::sqrt((circle_center_x - actor_center_x)*(circle_center_x - actor_center_x) + (circle_center_y - actor_center_y)*(circle_center_y - actor_center_y));  // <- Update
 
           collision = (dist < (CIRCLE_RADII[c] + CIRCLE_RADII[c2]));
         }
@@ -101,8 +101,8 @@ double close_to_main_goal_cost_spiral(const std::vector<PathPoint>& spiral,
                         (delta_z * delta_z));
 
   auto cost = logistic(dist);
-  // LOG(INFO) << "distance to main goal: " << dist;
-  // LOG(INFO) << "cost (log): " << cost;
+   LOG(INFO) << "distance to main goal: " << dist;
+   LOG(INFO) << "cost (log): " << cost;
   return cost;
 }
 }  // namespace cost_functions
